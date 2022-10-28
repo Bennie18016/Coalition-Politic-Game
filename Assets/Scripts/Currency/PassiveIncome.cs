@@ -14,6 +14,8 @@ public class PassiveIncome : MonoBehaviour
     public Currency bank;
     [Tooltip("ALl of the other peoples reputation script")]
     public List<Reputation> reputation = new List<Reputation>();
+    [Tooltip("The Legislation Manager")]
+    public LegislationManager LM;
 
     [Header("Debug")]
     public TMP_Text timer;
@@ -23,14 +25,18 @@ public class PassiveIncome : MonoBehaviour
     private void Update()
     {
         //Every in game hour
-        if(_second >= hour){
+        if (_second >= hour)
+        {
             Calculate();
             Hour();
             repChange();
         }
 
-        //Every real life second, + 1 to seconds
-        _second += 1 * Time.deltaTime;
+        if (!LM.Legislation)
+        {
+            //Every real life second, + 1 to seconds
+            _second += 1 * Time.deltaTime;
+        }
 
         //DEBUG
         //Shows us how long until next income in game as an int
@@ -59,6 +65,8 @@ public class PassiveIncome : MonoBehaviour
 
     private void Hour()
     {
+        //Starts a new Legislation
+        LM.NewLegislation();
         //Add money from Currency script
         bank.MoneyManager(moneyToAdd);
         //Reset the time
