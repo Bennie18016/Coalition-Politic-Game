@@ -16,21 +16,31 @@ public class Currency : MonoBehaviour
     public TMP_Text moneyText;
 
     //Adds or subtracts money.
-    public void MoneyManager(float additon){
+    public void MoneyManager(float additon)
+    {
         _money += additon;
     }
 
+    //Gives you the money value
+    public float Bank()
+    {
+        return _money;
+    }
+
     //Add money from the editor
-    private void DebugAddMoney(){
+    private void DebugAddMoney()
+    {
         _money += 100000;
     }
 
-    private void Update(){
+    private void Update()
+    {
         //Creates the string to always show how much money you have
         moneyStr = _money.ToString();
 
         //If money is over 1m, round to 2dp.
-        if(_money / 1000000 >= 1){
+        if (_money / 1000000 >= 1)
+        {
             var money = _money / 1000000;
             moneyStr = Math.Round(money, 2) + " m";
         }

@@ -27,7 +27,7 @@ public class Reputation : MonoBehaviour
         //Sets the sliders max value to the maxrep value
         repSlider.maxValue = maxRep;
         //Sets the starting value to be random
-        _reputation = Random.Range(0, 100) + 1;
+        _reputation = Random.Range(49, 100) + 1;
     }
 
     private void Update()
@@ -40,12 +40,13 @@ public class Reputation : MonoBehaviour
         toGive = _reputation * 100;
 
         //If reputation is above the maxmimum
-        if(_reputation > maxRep)
+        if (_reputation > maxRep)
         {
             //Set it to the maximum
             _reputation = maxRep;
-        //Else its below 0
-        } else if(_reputation < 0)
+            //Else its below 0
+        }
+        else if (_reputation < 0)
         {
             //Sets it to 0
             _reputation = 0;

@@ -16,6 +16,8 @@ public class PassiveIncome : MonoBehaviour
     public List<Reputation> reputation = new List<Reputation>();
     [Tooltip("The Legislation Manager")]
     public LegislationManager LM;
+    [Tooltip("The manager of the game!")]
+    public GameManager GM;
 
     [Header("Debug")]
     public TMP_Text timer;
@@ -65,6 +67,8 @@ public class PassiveIncome : MonoBehaviour
 
     private void Hour()
     {
+        //Adds one to the games hour
+        GM.hour++;
         //Starts a new Legislation
         LM.NewLegislation();
         //Add money from Currency script
