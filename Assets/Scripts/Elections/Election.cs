@@ -1,11 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class Election : MonoBehaviour
 {
     public List<Opposition> Opp = new List<Opposition>();
     public PlayerElection player;
+    public Currency bank;
     public int one, two, three;
+    public Slider electionBudget;
+    public TMP_Text moneyText;
+
+    #region Start   
     private void Start()
     {
         while (one + two + three != 100)
@@ -139,6 +146,17 @@ public class Election : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Update
+    private void Update()
+    {
+        electionBudget.maxValue = (int)bank.Bank();
+        moneyText.text = electionBudget.value.ToString();
+    }
+    #endregion
+
+    #region NewDay
     public void NewDay()
     {
         Opp[0].initFunding = Opp[0].funding;
@@ -267,7 +285,9 @@ public class Election : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region ElectionDay
     public void ElectionDay()
     {
         if (player.votePercentage! > Opp[0].votePercentage && player.votePercentage! > Opp[1].votePercentage)
@@ -275,4 +295,13 @@ public class Election : MonoBehaviour
             Debug.Log("End Game");
         }
     }
+    #endregion
+
+    #region AddMoney
+    public void AddMoneyToFunding()
+    {
+        player.funding += (int)electionBudget.value;
+        bank.MoneyManager(-electionBudget.value);
+    }
+    #endregion
 }
