@@ -24,6 +24,7 @@ public class PassiveIncome : MonoBehaviour
 
     private int moneyToAdd;
 
+#region Update
     private void Update()
     {
         //Every in game hour
@@ -44,7 +45,9 @@ public class PassiveIncome : MonoBehaviour
         //Shows us how long until next income in game as an int
         timer.text = (hour - (int)_second).ToString();
     }
+#endregion
 
+#region Calculate
     private void Calculate()
     {
         //For each of the reputation scripts
@@ -52,9 +55,13 @@ public class PassiveIncome : MonoBehaviour
         {
             //Add their money to give to the money we recieve
             moneyToAdd += item.toGive;
+            Debug.Log(item.toGive);
         }
+        Debug.Log(moneyToAdd);
     }
+#endregion
 
+#region RepChange
     private void repChange()
     {
         //For each of the reputation scripts
@@ -64,7 +71,9 @@ public class PassiveIncome : MonoBehaviour
             item.ReputationManager(Random.Range(-21, 20) + 1);
         }
     }
+#endregion
 
+#region Hour
     private void Hour()
     {
         //Adds one to the games hour
@@ -78,4 +87,5 @@ public class PassiveIncome : MonoBehaviour
         //Reset money to give
         moneyToAdd = 0;
     }
+#endregion
 }

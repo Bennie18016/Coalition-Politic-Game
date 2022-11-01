@@ -19,8 +19,14 @@ public class Reputation : MonoBehaviour
     [Header("Variables")]
     [Tooltip("The reputation the group has towards you")]
     public int _reputation;
-    [Tooltip("Amount of money they give to you every in-game hour")]
+    [Tooltip("Amount of money they give or take from you every in-game hour")]
     public int toGive;
+    [Tooltip("If they give you money")]
+    public bool givesMoney;
+    [Tooltip("If they take your money")]
+    public bool takesMoney;
+    [Tooltip("If they affect your vote percentage")]
+    public bool yourOpinion;
 
     private void Start()
     {
@@ -36,8 +42,17 @@ public class Reputation : MonoBehaviour
         repSlider.value = _reputation;
         //Sets the text how much reputation they have
         repText.text = _reputation.ToString();
-        //Sets the amount they give you to their reputation multiplied by 100
-        toGive = _reputation * 100;
+        
+        if(givesMoney)
+        {
+            //Sets the amount they give you to their reputation multiplied by 100
+            toGive = _reputation * 175;
+        } else if (takesMoney)
+        {
+            //Sets the amount they take from you based on their reputation
+            toGive = -_reputation * 60;
+            toGive += _reputation * 40;
+        }
 
         //If reputation is above the maxmimum
         if (_reputation > maxRep)

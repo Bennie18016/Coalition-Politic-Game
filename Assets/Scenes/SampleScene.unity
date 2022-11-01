@@ -1076,14 +1076,14 @@ MonoBehaviour:
   - Lower taxes
   Opposition:
   - Increase taxes
-  - More power over the public
   - Take away free school meals
-  - Opposition 2
+  - Put increased budget to military, increasing taxes
+  - Increase VAT by 10%
   Military:
   - Longer prison sentances
   - Powerful Weapons
   - Juristiction over Foreign Land
-  - Military 1
+  - Better research facilities
   WHS:
   - More Staff
   - More funding
@@ -7423,7 +7423,7 @@ GameObject:
   - component: {fileID: 3164150809672203941}
   - component: {fileID: 3164150809672203938}
   m_Layer: 5
-  m_Name: Rep 1
+  m_Name: Public Opinion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7446,6 +7446,9 @@ MonoBehaviour:
   maxRep: 100
   _reputation: 0
   toGive: 0
+  givesMoney: 0
+  takesMoney: 0
+  yourOpinion: 1
 --- !u!224 &3164150809672203939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7519,7 +7522,7 @@ GameObject:
   - component: {fileID: 3164150809740440757}
   - component: {fileID: 3164150809740440754}
   m_Layer: 5
-  m_Name: Rep 3
+  m_Name: Military
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7542,6 +7545,9 @@ MonoBehaviour:
   maxRep: 100
   _reputation: 0
   toGive: 0
+  givesMoney: 0
+  takesMoney: 1
+  yourOpinion: 0
 --- !u!224 &3164150809740440755
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8067,7 +8073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Public
+  m_text: Public Opinion
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8537,7 +8543,7 @@ GameObject:
   - component: {fileID: 3164150810408437220}
   - component: {fileID: 3164150810408437221}
   m_Layer: 5
-  m_Name: Rep 2
+  m_Name: Pubic Income
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8590,6 +8596,9 @@ MonoBehaviour:
   maxRep: 100
   _reputation: 0
   toGive: 0
+  givesMoney: 1
+  takesMoney: 0
+  yourOpinion: 0
 --- !u!222 &3164150810408437223
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9194,7 +9203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Opposition
+  m_text: Public Income
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9481,7 +9490,7 @@ GameObject:
   - component: {fileID: 3164150810964625801}
   - component: {fileID: 3164150810964625846}
   m_Layer: 5
-  m_Name: Rep 4
+  m_Name: WHS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9504,6 +9513,9 @@ MonoBehaviour:
   maxRep: 100
   _reputation: 0
   toGive: 0
+  givesMoney: 0
+  takesMoney: 1
+  yourOpinion: 0
 --- !u!224 &3164150810964625847
 RectTransform:
   m_ObjectHideFlags: 0
