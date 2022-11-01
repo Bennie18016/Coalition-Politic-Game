@@ -6,13 +6,14 @@ using System.Collections.Generic;
 public class Election : MonoBehaviour
 {
     public List<Opposition> Opp = new List<Opposition>();
+    public List<Reputation> Reputations = new List<Reputation>();
     public PlayerElection player;
     public Currency bank;
     public int one, two, three;
     public Slider electionBudget;
     public TMP_Text moneyText;
 
-    #region Start   
+#region Start   
     private void Start()
     {
         while (one + two + three != 100)
@@ -145,23 +146,29 @@ public class Election : MonoBehaviour
             }
         }
     }
+#endregion
 
-    #endregion
-
-    #region Update
+#region Update
     private void Update()
     {
         electionBudget.maxValue = (int)bank.Bank();
         moneyText.text = electionBudget.value.ToString();
     }
-    #endregion
+#endregion
 
-    #region NewDay
+#region NewDay
     public void NewDay()
     {
         Opp[0].initFunding = Opp[0].funding;
         Opp[1].initFunding = Opp[1].funding;
         player.initFunding = player.funding;
+
+        foreach(Reputation item in Reputations){
+            if(item.yourOpinion)
+            {
+                player.initFunding += item._reputation * 750;
+            }
+        }
 
         while (one + two + three != 100)
         {
@@ -285,9 +292,9 @@ public class Election : MonoBehaviour
             }
         }
     }
-    #endregion
+#endregion
 
-    #region ElectionDay
+#region ElectionDay
     public void ElectionDay()
     {
         if (player.votePercentage! > Opp[0].votePercentage && player.votePercentage! > Opp[1].votePercentage)
@@ -295,13 +302,13 @@ public class Election : MonoBehaviour
             Debug.Log("End Game");
         }
     }
-    #endregion
+#endregion
 
-    #region AddMoney
+#region AddMoney
     public void AddMoneyToFunding()
     {
         player.funding += (int)electionBudget.value;
         bank.MoneyManager(-electionBudget.value);
     }
-    #endregion
+#endregion
 }
