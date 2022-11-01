@@ -42,7 +42,7 @@ public class LegislationManager : MonoBehaviour
                 vPublic = Random.Range(-21, 10) + 1;
                 military = Random.Range(0, 20) + 1;
                 WHS = Random.Range(-11, 15) + 1;
-                legislation = string.Format("The Opposition want: \n{0}", LL.Opposition[Random.Range(0, LL.Opposition.Count)]);
+                legislation = string.Format("To increase taxes, we can: \n{0}", LL.Opposition[Random.Range(0, LL.Opposition.Count)]);
                 break;
             case 3:
                 //Military Likes
