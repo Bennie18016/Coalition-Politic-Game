@@ -7,7 +7,7 @@ using TMPro;
 
 public class Reputation : MonoBehaviour
 {
-    [Header("Fundermentals")]
+    [Header("Fundamentals")]
     [Tooltip("The slider which shows the reputation")]
     public Slider repSlider;
     [Tooltip("Text that shows exact reputation")]
