@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("Election Manager")]
     public Election election;
     [Header("Values")]
-    public int day = 1, hour, dayTillElection, electionDay;
+    public int day = 1;
+    public int hour, dayTillElection, electionDay;
 
     private void Start()
     {
@@ -39,10 +40,13 @@ public class GameManager : MonoBehaviour
     private void ElectionDay()
     {
         electionDay = dayTillElection - day;
-        if (dayTillElection == 0)
+        if (electionDay <= 0)
         {
+            Debug.Log("Election Day");
             election.ElectionDay();
-            dayTillElection += DaysPerElection;
+            dayTillElection += DaysPerElection + 1;
+            electionDay = DaysPerElection + 1;
+            Time.timeScale = 0;
         }
     }
 

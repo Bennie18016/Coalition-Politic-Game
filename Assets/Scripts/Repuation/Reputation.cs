@@ -7,7 +7,7 @@ using TMPro;
 
 public class Reputation : MonoBehaviour
 {
-    [Header("Fundermentals")]
+    [Header("Fundamentals")]
     [Tooltip("The slider which shows the reputation")]
     public Slider repSlider;
     [Tooltip("Text that shows exact reputation")]
@@ -27,6 +27,11 @@ public class Reputation : MonoBehaviour
     public bool takesMoney;
     [Tooltip("If they affect your vote percentage")]
     public bool yourOpinion;
+
+    [Tooltip("The UI shown when the player fails by reputation reaching zero")]
+    public GameObject failUI;
+
+    public GameObject GameUI;
 
     private void Start()
     {
@@ -65,6 +70,14 @@ public class Reputation : MonoBehaviour
         {
             //Sets it to 0
             _reputation = 0;
+        }
+
+        if (_reputation == 0)
+        {
+            GameUI.SetActive(false);
+            failUI.SetActive(true);
+            Debug.Log("Failed!");
+            Time.timeScale = 0;
         }
     }
 

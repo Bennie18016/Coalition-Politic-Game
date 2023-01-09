@@ -12,6 +12,11 @@ public class Election : MonoBehaviour
     public int one, two, three;
     public Slider electionBudget;
     public TMP_Text moneyText;
+    public TMP_Text first, second, third, results;
+
+    public GameObject GameUI;
+    public GameObject failUI;
+    public GameObject electUI;
 
 #region Start   
     private void Start()
@@ -297,9 +302,27 @@ public class Election : MonoBehaviour
 #region ElectionDay
     public void ElectionDay()
     {
-        if (player.votePercentage! > Opp[0].votePercentage && player.votePercentage! > Opp[1].votePercentage)
+        if (player.votePercentage < Opp[0].votePercentage || player.votePercentage < Opp[1].votePercentage)
         {
-            Debug.Log("End Game");
+            GameUI.SetActive(false);
+            failUI.SetActive(true);
+            Debug.Log("Failed!");
+            Time.timeScale = 0;
+        } else
+        {
+            electUI.SetActive(true);
+            first.text = "Player";
+            results.text = "Player";
+
+            if (Opp[0].votePercentage > Opp[1].votePercentage)
+            {
+                second.text = Opp[0].Name;
+                third.text = Opp[1].Name;
+            } else
+            {
+                second.text = Opp[1].Name;
+                third.text = Opp[0].Name;
+            }
         }
     }
 #endregion
